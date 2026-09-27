@@ -1,0 +1,14 @@
+# Böngésző csomagolási melléktermékek
+web-ext-artifacts/
+*.zip
+*.xpi
+*.crx
+*.pem
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
