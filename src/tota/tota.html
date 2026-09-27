@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tóta W. Árpád – hvglight</title>
+  <link rel="icon" href="../../icons/icon-32.png">
+  <link rel="stylesheet" href="../shared/ui.css">
+  <link rel="stylesheet" href="tota.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap top">
+      <div>
+        <h1>Tóta W. Árpád</h1>
+        <p class="sub" id="sub">A szerző cikkei, mindig szűrés nélkül</p>
+      </div>
+      <nav class="tools">
+        <button type="button" id="refresh" class="btn btn-quiet">Frissítés</button>
+        <a href="https://hvg.hu/szerzok/tota-w-arpad" target="_blank" rel="noopener" class="btn">hvg.hu-n ↗</a>
+      </nav>
+    </div>
+    <div class="mesh"></div>
+  </header>
+
+  <div class="wrap">
+    <div class="controls">
+      <label class="search">
+        <span class="visually-hidden">Keresés a cikkek címében és bevezetőjében</span>
+        <input type="search" id="q" placeholder="Keresés a cikkek közt" autocomplete="off">
+      </label>
+    </div>
+    <main id="list" aria-live="polite"></main>
+    <div class="more-wrap">
+      <button type="button" id="more" class="btn btn-quiet">Több betöltése</button>
+    </div>
+  </div>
+
+  <script src="../shared/defaults.js"></script>
+  <script src="../shared/ui.js"></script>
+  <script src="tota.js"></script>
+</body>
+</html>

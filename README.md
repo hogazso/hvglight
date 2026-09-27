@@ -38,6 +38,8 @@ majd a hvg.hu lap újratöltése.
 - **Címlaptár** (popup → Címlaptár): a heti hvg-címlapok nézegetője, hét/év szerint
   léptethető, ugrás mezővel (pl. `2020-15`).
 - **Marabu-tár** (popup → Marabu-tár): Marabu karikatúráinak nézegetője, kereséssel.
+- **Tóta W. Árpád cikkei** (popup → Tóta W. Árpád cikkei): a szerző cikkeinek önálló, mindig
+  szűrés nélküli nézegetője, kereséssel. A szerző alapból kivétel is: cikkei sose szűrődnek ki.
 - **Szabályok oldal**: a szűrési szabályok szerkesztése, export/import JSON-ban.
 
 Címke-, szerző- és keresőoldalon a bővítmény nem szűr.
@@ -54,6 +56,7 @@ src/options/   szabályok oldal
 src/reader/    tiszta hírfolyam
 src/covers/    Címlaptár
 src/marabu/    Marabu-tár
+src/tota/      Tóta W. Árpád cikkei
 ```
 
 ## Adatkezelés

@@ -29,6 +29,16 @@
     return out;
   }
 
+  // Az RSS <author> mezője "cím@hvg.hu (Szerző Neve)" alakú; a zárójeles névvel
+  // a szerző úgy viselkedik a szűrésben, mint egy szokásos címke (tiltható/kivétel).
+  function authorName(raw) {
+    const s = String(raw || '');
+    const open = s.indexOf('(');
+    const close = s.lastIndexOf(')');
+    if (open < 0 || close <= open) return '';
+    return s.slice(open + 1, close).replace(/\s+/g, ' ').trim();
+  }
+
   S.parseRss = function (xmlText, feedSlug) {
     const doc = new DOMParser().parseFromString(xmlText, 'application/xml');
     if (doc.getElementsByTagName('parsererror').length) throw new Error('Hibás RSS');
@@ -41,13 +51,15 @@
       const d = S.describeUrl(txt('link'));
       if (!d || !d.isArticle) continue;
       const cats = uniqCi(Array.from(it.getElementsByTagName('category')).map((c) => c.textContent || ''));
+      const author = authorName(txt('author'));
       const media = it.getElementsByTagName('media:content')[0] || it.getElementsByTagName('enclosure')[0];
       items.push({
         url: d.url,
         title: txt('title'),
         lead: stripHtml(txt('description')),
-        tags: cats,
+        tags: author ? uniqCi([...cats, author]) : cats,
         rubric: cats[0] || '',
+        author,
         date: Date.parse(txt('pubDate')) || 0,
         img: media ? media.getAttribute('url') || '' : '',
         feeds: feedSlug ? [feedSlug] : [],
@@ -80,6 +92,7 @@
     if (it.img) prev.img = it.img;
     if (it.date) prev.date = it.date;
     if (!prev.rubric) prev.rubric = it.rubric;
+    if (it.author) prev.author = it.author;
   }
 
   /**

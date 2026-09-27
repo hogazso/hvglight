@@ -37,6 +37,10 @@
     S.api.tabs.create({ url: S.api.runtime.getURL('src/marabu/marabu.html') });
     window.close();
   });
+  $('tota').addEventListener('click', () => {
+    S.api.tabs.create({ url: S.api.runtime.getURL('src/tota/tota.html') });
+    window.close();
+  });
   $('refresh').addEventListener('click', async () => {
     $('index-age').textContent = 'Frissítés…';
     if (tabId != null) {
