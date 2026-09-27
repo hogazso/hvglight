@@ -432,7 +432,7 @@
     };
     return group(
       'Mentés és visszaállítás',
-      'A szabályok a böngésző fiókodon keresztül szinkronizálódnak. Fájlba mentve másik böngészőbe is átviheted őket.',
+      'Ha be van kapcsolva a böngésződ szinkronizálása, a szabályaid automatikusan átkerülnek a többi gépedre is. Fájlba mentve más böngészőbe is átviheted őket.',
       el(
         'div',
         { class: 'tools' },
