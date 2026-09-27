@@ -6,6 +6,11 @@ hvg.hu cikkeit saját szabályok szerint, és két nézegetőt ad hozzá: a heti
 
 ## Telepítés
 
+A [Releases](https://github.com/hogazso/hvglight/releases) oldalon buildelés nélkül
+kész zip van Chrome-hoz és Firefoxhoz; kicsomagolás után az alábbiak szerint tölthető be.
+Forrásból: `scripts/build.sh all` legyártja ugyanezt a `dist-chrome/` és `dist-firefox/`
+mappákba.
+
 **Chrome / Edge / Brave**
 
 1. `chrome://extensions` (Edge: `edge://extensions`).
