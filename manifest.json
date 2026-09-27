@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "hvglight – hvg.hu bulvár nélkül",
   "short_name": "hvglight",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Saját szabályok szerint szűri a hvg.hu cikkeit: rovat, címke, kulcsszó és testvéroldal alapján. Tiszta hírfolyam, címlaptár, Marabu-tár és Tóta W. Árpád cikkei.",
   "icons": {
     "16": "icons/icon-16.png",
