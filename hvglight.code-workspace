@@ -3,5 +3,17 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings": {
+		"stamp.color": "#ef6c00",
+		"workbench.colorCustomizations": {
+			"statusBar.background": "#7a3c0a",
+			"statusBar.foreground": "#ffffff",
+			"statusBar.debuggingBackground": "#7a3c0a",
+			"statusBar.debuggingForeground": "#ffffff",
+			"statusBar.noFolderBackground": "#7a3c0a",
+			"statusBarItem.remoteBackground": "#7a3c0a",
+			"statusBarItem.remoteForeground": "#ffffff"
+		}
+	}
 }
