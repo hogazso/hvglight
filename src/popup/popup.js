@@ -56,6 +56,26 @@
             : 'Nyisd meg a hvg.hu-t, és itt látod, mit szűrtem ki, vagy olvass a tiszta hírfolyamban.',
         })
       );
+      if (!isHvg) {
+        box.append(
+          el(
+            'p',
+            { class: 'note' },
+            el('a', {
+              class: 'hvg-link',
+              href: 'https://hvg.hu/',
+              target: '_blank',
+              rel: 'noopener',
+              text: 'hvg.hu megnyitása',
+              onclick: (e) => {
+                e.preventDefault();
+                S.api.tabs.create({ url: 'https://hvg.hu/' });
+                window.close();
+              },
+            })
+          )
+        );
+      }
       $('index-age').textContent = '';
       return;
     }
