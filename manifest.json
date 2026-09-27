@@ -1,0 +1,50 @@
+{
+  "manifest_version": 3,
+  "name": "Szita – hvg.hu bulvár nélkül",
+  "short_name": "Szita",
+  "version": "1.0.0",
+  "description": "Saját szabályok szerint szűri a hvg.hu cikkeit: rovat, címke, kulcsszó és testvéroldal alapján. Tiszta hírfolyammal.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://hvg.hu/*",
+    "https://www.hvg.hu/*",
+    "https://pulzus.hvg.hu/*"
+  ],
+  "action": {
+    "default_title": "Szita",
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png"
+    }
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://hvg.hu/*", "https://www.hvg.hu/*"],
+      "js": [
+        "src/shared/defaults.js",
+        "src/shared/rules.js",
+        "src/shared/feed.js",
+        "src/content/content.js"
+      ],
+      "css": ["src/content/content.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "szita@sajat.local",
+      "strict_min_version": "115.0"
+    }
+  }
+}

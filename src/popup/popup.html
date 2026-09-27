@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <title>Szita</title>
+  <link rel="stylesheet" href="../shared/ui.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="head">
+    <h1>Szita</h1>
+    <label class="switch" title="Szűrés be/ki">
+      <input type="checkbox" id="enabled">
+      <span class="track"></span>
+      <span class="visually-hidden">Szűrés bekapcsolva</span>
+    </label>
+  </header>
+  <div class="mesh"></div>
+
+  <section id="status" class="status" aria-live="polite"></section>
+
+  <div class="row">
+    <span id="mode-label">Kiszűrt cikkek</span>
+    <div class="seg" role="radiogroup" aria-labelledby="mode-label">
+      <label><input type="radio" name="mode" value="hide"><span>Elrejtés</span></label>
+      <label><input type="radio" name="mode" value="dim"><span>Halványítás</span></label>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button type="button" id="reader" class="btn btn-primary">Tiszta hírfolyam</button>
+    <button type="button" id="options" class="btn">Szabályok</button>
+  </div>
+
+  <footer class="foot">
+    <span id="index-age"></span>
+    <button type="button" id="refresh" class="btn-link" hidden>Címkék frissítése</button>
+  </footer>
+
+  <script src="../shared/defaults.js"></script>
+  <script src="../shared/rules.js"></script>
+  <script src="../shared/ui.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

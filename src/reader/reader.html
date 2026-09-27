@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Szita – tiszta hvg.hu</title>
+  <link rel="icon" href="../../icons/icon-32.png">
+  <link rel="stylesheet" href="../shared/ui.css">
+  <link rel="stylesheet" href="reader.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap top">
+      <div>
+        <h1>Szita</h1>
+        <p class="sub" id="sub">hvg.hu, a saját szabályaid szerint</p>
+      </div>
+      <nav class="tools">
+        <button type="button" id="refresh" class="btn btn-quiet">Frissítés</button>
+        <a href="../options/options.html" class="btn">Szabályok</a>
+      </nav>
+    </div>
+    <div class="mesh"></div>
+  </header>
+
+  <div class="wrap">
+    <div class="controls">
+      <div class="filters" id="filters" role="toolbar" aria-label="Rovat szerinti szűrés"></div>
+      <div class="controls-row">
+        <label class="search">
+          <span class="visually-hidden">Keresés a címekben és bevezetőkben</span>
+          <input type="search" id="q" placeholder="Keresés a címekben" autocomplete="off">
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="show-chaff">
+          <span class="track"></span>
+          <span>Kiszűrtek mutatása <span id="chaff-count" class="count"></span></span>
+        </label>
+      </div>
+    </div>
+    <main id="list" aria-live="polite"></main>
+  </div>
+
+  <script src="../shared/defaults.js"></script>
+  <script src="../shared/rules.js"></script>
+  <script src="../shared/feed.js"></script>
+  <script src="../shared/ui.js"></script>
+  <script src="reader.js"></script>
+</body>
+</html>
