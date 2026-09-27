@@ -1,5 +1,7 @@
 # Böngésző csomagolási melléktermékek
 web-ext-artifacts/
+dist-chrome/
+dist-firefox/
 *.zip
 *.xpi
 *.crx
