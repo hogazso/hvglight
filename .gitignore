@@ -13,4 +13,5 @@ Thumbs.db
 
 # Editor
 .vscode/
+.claude/
 *.swp
