@@ -1,0 +1,23 @@
+/* hvglight – Címlaptár: fejléc-vezérlők (év-léptető, ugrás mező). */
+.cv-yearnav { display: flex; align-items: center; gap: 8px; }
+.cv-yearbtn {
+  appearance: none; border: 1px solid rgba(255, 255, 255, 0.18); background: rgba(255, 255, 255, 0.06);
+  color: #fff; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 15px; line-height: 1;
+}
+.cv-yearbtn:hover { background: rgba(255, 255, 255, 0.16); }
+.cv-year { font: 600 16px/1 var(--serif); min-width: 46px; text-align: center; font-variant-numeric: tabular-nums; }
+
+.cv-jumpform { display: flex; gap: 6px; }
+.cv-jump {
+  width: 190px; max-width: 42vw;
+  padding: 6px 10px; border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06); color: #fff;
+}
+.cv-jump::placeholder { color: rgba(242, 241, 236, 0.45); }
+.cv-jumpbtn { color: #fff; border-color: rgba(255, 255, 255, 0.18); }
+.cv-jumpbtn:hover { background: rgba(255, 255, 255, 0.14); }
+
+@media (max-width: 640px) {
+  .cv-jump { width: 130px; }
+}

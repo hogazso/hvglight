@@ -29,6 +29,14 @@
     S.api.runtime.openOptionsPage();
     window.close();
   });
+  $('covers').addEventListener('click', () => {
+    S.api.tabs.create({ url: S.api.runtime.getURL('src/covers/covers.html') });
+    window.close();
+  });
+  $('marabu').addEventListener('click', () => {
+    S.api.tabs.create({ url: S.api.runtime.getURL('src/marabu/marabu.html') });
+    window.close();
+  });
   $('refresh').addEventListener('click', async () => {
     $('index-age').textContent = 'Frissítés…';
     if (tabId != null) {

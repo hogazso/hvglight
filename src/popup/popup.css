@@ -24,6 +24,8 @@ h1 { margin: 0; font: 600 24px/1 var(--serif); letter-spacing: -0.01em; }
 }
 .actions { display: flex; gap: 8px; }
 .actions .btn-primary { flex: 1; justify-content: center; }
+.actions.actions-2 { margin-top: 8px; }
+.actions.actions-2 .btn { flex: 1; justify-content: center; }
 
 .foot {
   display: flex; justify-content: space-between; align-items: center;
