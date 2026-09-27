@@ -1,7 +1,7 @@
-/* Szita – beállítások oldal. Minden változás automatikusan mentődik. */
+/* hvglight – beállítások oldal. Minden változás automatikusan mentődik. */
 (async function () {
   'use strict';
-  const S = globalThis.Szita;
+  const S = globalThis.hvglight;
   const el = S.ui.el;
   const $ = (id) => document.getElementById(id);
 
@@ -400,14 +400,14 @@
           },
         });
       } catch (e) {
-        S.ui.toast(`Ez a fájl nem Szita-szabálykészlet (${e.message}).`);
+        S.ui.toast(`Ez a fájl nem hvglight-szabálykészlet (${e.message}).`);
       }
       file.value = '';
     });
     const exportJson = () => {
       const { updatedAt, ...rest } = state.settings;
-      const blob = new Blob([JSON.stringify({ szita: 1, settings: rest }, null, 2)], { type: 'application/json' });
-      const a = el('a', { href: URL.createObjectURL(blob), download: 'szita-szabalyok.json' });
+      const blob = new Blob([JSON.stringify({ hvglight: 1, settings: rest }, null, 2)], { type: 'application/json' });
+      const a = el('a', { href: URL.createObjectURL(blob), download: 'hvglight-szabalyok.json' });
       document.body.append(a);
       a.click();
       setTimeout(() => {

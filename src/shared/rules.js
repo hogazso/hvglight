@@ -1,5 +1,5 @@
 /*
- * Szita – szabálymotor. Egy cikkről eldönti, átmegy-e a szitán, és miért.
+ * hvglight – szabálymotor. Egy cikkről eldönti, átmegy-e a szitán, és miért.
  *
  * Kiértékelési sorrend:
  *   1. Kivételek (mindig nyernek): prémium, kivétel rovat, kivétel címke, kivétel kulcsszó
@@ -8,7 +8,7 @@
  */
 (function (g) {
   'use strict';
-  const S = g.Szita;
+  const S = g.hvglight;
 
   const lc = (s) => String(s || '').toLocaleLowerCase('hu-HU').trim();
   S.lc = lc;

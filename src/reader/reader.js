@@ -1,7 +1,7 @@
-/* Szita – tiszta hírfolyam az RSS-indexből, ugyanazokkal a szabályokkal, mint a hvg.hu-n. */
+/* hvglight – tiszta hírfolyam az RSS-indexből, ugyanazokkal a szabályokkal, mint a hvg.hu-n. */
 (async function () {
   'use strict';
-  const S = globalThis.Szita;
+  const S = globalThis.hvglight;
   const el = S.ui.el;
   const $ = (id) => document.getElementById(id);
 

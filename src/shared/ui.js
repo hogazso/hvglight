@@ -1,7 +1,7 @@
-/* Szita – apró DOM-segédek az extension oldalaihoz (popup, beállítások, hírfolyam). */
+/* hvglight – apró DOM-segédek az extension oldalaihoz (popup, beállítások, hírfolyam). */
 (function (g) {
   'use strict';
-  const S = g.Szita;
+  const S = g.hvglight;
   const UI = (S.ui = {});
 
   UI.el = function (tag, props, ...kids) {

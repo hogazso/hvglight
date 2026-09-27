@@ -1,12 +1,12 @@
 /*
- * Szita – RSS-index. A hvg.hu hírfolyamaiból felépít egy URL → {címkék, lead, rovatok}
+ * hvglight – RSS-index. A hvg.hu hírfolyamaiból felépít egy URL → {címkék, lead, rovatok}
  * térképet, és a storage.local-ban tárolja. A címlap kártyáin nincs címke, az RSS-ben van.
  */
 (function (g) {
   'use strict';
-  const S = g.Szita;
+  const S = g.hvglight;
 
-  const KEY = 'szitaIndex';
+  const KEY = 'hvglightIndex';
   const MAX_AGE = 4 * 24 * 3600 * 1000; // ennél régebbi cikkeket eldobunk
   const MAX_ITEMS = 1500;
   S.INDEX_TTL = 15 * 60 * 1000;

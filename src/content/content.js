@@ -1,21 +1,21 @@
 /*
- * Szita – content script a hvg.hu oldalain.
+ * hvglight – content script a hvg.hu oldalain.
  *
- * A kártyákra csak data-attribútumokat tesz (data-szita-card="keep|block"),
- * a láthatóságot a <html data-szita-mode="hide|dim|off"> és a content.css dönti el.
+ * A kártyákra csak data-attribútumokat tesz (data-hvglight-card="keep|block"),
+ * a láthatóságot a <html data-hvglight-mode="hide|dim|off"> és a content.css dönti el.
  * Így a mód váltása azonnali, újraszámolás nélkül.
  */
 (function () {
   'use strict';
-  const S = globalThis.Szita;
-  if (!S || !S.api || window.__szitaLoaded) return;
-  window.__szitaLoaded = true;
+  const S = globalThis.hvglight;
+  if (!S || !S.api || window.__hvglightLoaded) return;
+  window.__hvglightLoaded = true;
 
   const root = document.documentElement;
   // Amíg a beállítások be nem töltődnek, a még nem minősített kártyák láthatatlanok
   // (nem villan fel a bulvár). Biztonsági időzítő: 2,5 mp után mindenképp feloldjuk.
-  root.classList.add('szita-pending');
-  const release = () => root.classList.remove('szita-pending');
+  root.classList.add('hvglight-pending');
+  const release = () => root.classList.remove('hvglight-pending');
   const safety = setTimeout(release, 2500);
 
   const CARD = 'article.article-card';
@@ -49,7 +49,7 @@
   }
 
   function setMode() {
-    root.setAttribute('data-szita-mode', effectiveMode());
+    root.setAttribute('data-hvglight-mode', effectiveMode());
   }
 
   // ---------- kártyák ----------
@@ -74,25 +74,25 @@
   function apply(card) {
     const a = readCard(card);
     if (!a) {
-      card.setAttribute('data-szita-card', 'skip');
+      card.setAttribute('data-hvglight-card', 'skip');
       return;
     }
     const v = S.evaluate(a, compiled, ctx);
-    card.setAttribute('data-szita-card', v.keep ? 'keep' : 'block');
-    card.setAttribute('data-szita-url', a.url);
+    card.setAttribute('data-hvglight-card', v.keep ? 'keep' : 'block');
+    card.setAttribute('data-hvglight-url', a.url);
     if (v.keep) {
-      card.removeAttribute('data-szita-why');
+      card.removeAttribute('data-hvglight-why');
     } else {
-      card.setAttribute('data-szita-why', v.why);
+      card.setAttribute('data-hvglight-why', v.why);
     }
   }
 
   // Blokkok cím szerint, és az üressé vált oszlopok/blokkok összecsukása.
   function collapse() {
-    document.querySelectorAll('[data-szita-empty]').forEach((el) => el.removeAttribute('data-szita-empty'));
-    document.querySelectorAll('[data-szita-section]').forEach((el) => {
-      el.removeAttribute('data-szita-section');
-      el.removeAttribute('data-szita-why');
+    document.querySelectorAll('[data-hvglight-empty]').forEach((el) => el.removeAttribute('data-hvglight-empty'));
+    document.querySelectorAll('[data-hvglight-section]').forEach((el) => {
+      el.removeAttribute('data-hvglight-section');
+      el.removeAttribute('data-hvglight-why');
     });
 
     document.querySelectorAll('.card-section__header__title').forEach((h) => {
@@ -100,13 +100,13 @@
       if (!title || !compiled.hideBlocks.has(title)) return;
       const sec = h.closest('section') || h.closest('.card-section');
       if (!sec) return;
-      sec.setAttribute('data-szita-section', 'block');
-      sec.setAttribute('data-szita-why', `Blokk: ${h.textContent.trim()}`);
+      sec.setAttribute('data-hvglight-section', 'block');
+      sec.setAttribute('data-hvglight-why', `Blokk: ${h.textContent.trim()}`);
     });
 
     if (settings.collapseEmpty) {
       const candidates = new Set();
-      document.querySelectorAll('[data-szita-card="block"]').forEach((card) => {
+      document.querySelectorAll('[data-hvglight-card="block"]').forEach((card) => {
         let p = card.parentElement;
         for (let i = 0; p && i < 5; i++, p = p.parentElement) {
           if (p === document.body || p.matches('main')) break;
@@ -119,12 +119,12 @@
         if (!cards.length || el.querySelector(OTHER_CONTENT)) continue;
         let allBlocked = true;
         for (const c of cards) {
-          if (c.getAttribute('data-szita-card') !== 'block') {
+          if (c.getAttribute('data-hvglight-card') !== 'block') {
             allBlocked = false;
             break;
           }
         }
-        if (allBlocked) el.setAttribute('data-szita-empty', '');
+        if (allBlocked) el.setAttribute('data-hvglight-empty', '');
       }
     }
     updatePill();
@@ -147,22 +147,22 @@
   // ---------- statisztika (a popupnak és a pirulának) ----------
   function stats() {
     const byUrl = new Map();
-    document.querySelectorAll('[data-szita-card="keep"], [data-szita-card="block"]').forEach((c) => {
-      const u = c.getAttribute('data-szita-url');
+    document.querySelectorAll('[data-hvglight-card="keep"], [data-hvglight-card="block"]').forEach((c) => {
+      const u = c.getAttribute('data-hvglight-url');
       if (u && !byUrl.has(u)) byUrl.set(u, c);
     });
     let blocked = 0;
     const reasons = {};
     for (const c of byUrl.values()) {
-      if (c.getAttribute('data-szita-card') !== 'block') continue;
+      if (c.getAttribute('data-hvglight-card') !== 'block') continue;
       blocked++;
-      const w = c.getAttribute('data-szita-why') || '?';
+      const w = c.getAttribute('data-hvglight-why') || '?';
       reasons[w] = (reasons[w] || 0) + 1;
     }
     return {
       total: byUrl.size,
       blocked,
-      blocks: document.querySelectorAll('[data-szita-section]').length,
+      blocks: document.querySelectorAll('[data-hvglight-section]').length,
       reasons: Object.entries(reasons).sort((a, b) => b[1] - a[1]),
       mode: effectiveMode(),
       settingsMode: settings.mode,
@@ -185,7 +185,7 @@
     if (!pill) {
       pill = document.createElement('button');
       pill.type = 'button';
-      pill.id = 'szita-pill';
+      pill.id = 'hvglight-pill';
       document.body.appendChild(pill);
     }
     const label =
@@ -250,7 +250,7 @@
       indexT = idx.t;
       reapply();
     } catch (e) {
-      console.debug('[Szita] Az RSS-frissítés nem sikerült:', e);
+      console.debug('[hvglight] Az RSS-frissítés nem sikerült:', e);
     } finally {
       refreshing = false;
     }
@@ -258,13 +258,13 @@
 
   // ---------- üzenetek a popupból ----------
   S.api.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
-    if (!msg || typeof msg.type !== 'string' || !msg.type.startsWith('szita:')) return;
-    if (msg.type === 'szita:peek') {
+    if (!msg || typeof msg.type !== 'string' || !msg.type.startsWith('hvglight:')) return;
+    if (msg.type === 'hvglight:peek') {
       peek = !!msg.value;
       setMode();
       updatePill();
     }
-    if (msg.type === 'szita:refresh') refresh();
+    if (msg.type === 'hvglight:refresh') refresh();
     sendResponse(ready ? stats() : null);
   });
 

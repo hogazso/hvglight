@@ -1,20 +1,20 @@
-/* Szita – a hvg.hu oldalába injektált stílus. Minden szabály data-attribútumra épül. */
+/* hvglight – a hvg.hu oldalába injektált stílus. Minden szabály data-attribútumra épül. */
 
 /* Betöltés közben a még nem minősített kártyák nem villannak fel. */
-html.szita-pending article.article-card:not([data-szita-card]) {
+html.hvglight-pending article.article-card:not([data-hvglight-card]) {
   visibility: hidden !important;
 }
 
 /* Elrejtés */
-html[data-szita-mode="hide"] [data-szita-card="block"],
-html[data-szita-mode="hide"] [data-szita-section="block"],
-html[data-szita-mode="hide"] [data-szita-empty] {
+html[data-hvglight-mode="hide"] [data-hvglight-card="block"],
+html[data-hvglight-mode="hide"] [data-hvglight-section="block"],
+html[data-hvglight-mode="hide"] [data-hvglight-empty] {
   display: none !important;
 }
 
-/* Halványítás: látszik, mit szűrne a szita, és miért */
-html[data-szita-mode="dim"] [data-szita-card="block"],
-html[data-szita-mode="dim"] [data-szita-section="block"] {
+/* Halványítás: látszik, mit szűrne a hvglight, és miért */
+html[data-hvglight-mode="dim"] [data-hvglight-card="block"],
+html[data-hvglight-mode="dim"] [data-hvglight-section="block"] {
   position: relative !important;
   opacity: 0.3 !important;
   filter: grayscale(1) !important;
@@ -22,14 +22,14 @@ html[data-szita-mode="dim"] [data-szita-section="block"] {
   outline-offset: -2px !important;
   transition: opacity 0.12s ease;
 }
-html[data-szita-mode="dim"] [data-szita-card="block"]:hover,
-html[data-szita-mode="dim"] [data-szita-section="block"]:hover {
+html[data-hvglight-mode="dim"] [data-hvglight-card="block"]:hover,
+html[data-hvglight-mode="dim"] [data-hvglight-section="block"]:hover {
   opacity: 0.9 !important;
   filter: none !important;
 }
-html[data-szita-mode="dim"] [data-szita-card="block"]::after,
-html[data-szita-mode="dim"] [data-szita-section="block"]::after {
-  content: attr(data-szita-why) !important;
+html[data-hvglight-mode="dim"] [data-hvglight-card="block"]::after,
+html[data-hvglight-mode="dim"] [data-hvglight-section="block"]::after {
+  content: attr(data-hvglight-why) !important;
   position: absolute !important;
   top: 6px !important;
   left: 6px !important;
@@ -51,7 +51,7 @@ html[data-szita-mode="dim"] [data-szita-section="block"]::after {
 }
 
 /* Lebegő pirula */
-#szita-pill {
+#hvglight-pill {
   position: fixed;
   left: 16px;
   bottom: 16px;
@@ -69,18 +69,18 @@ html[data-szita-mode="dim"] [data-szita-section="block"]::after {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
   transition: opacity 0.12s ease;
 }
-#szita-pill:hover,
-#szita-pill:focus-visible {
+#hvglight-pill:hover,
+#hvglight-pill:focus-visible {
   opacity: 1;
 }
-#szita-pill:focus-visible {
+#hvglight-pill:focus-visible {
   outline: 2px solid #5fb8c4;
   outline-offset: 2px;
 }
-#szita-pill[aria-pressed="true"] {
+#hvglight-pill[aria-pressed="true"] {
   background-color: #a63a24;
   opacity: 1;
 }
 @media print {
-  #szita-pill { display: none !important; }
+  #hvglight-pill { display: none !important; }
 }

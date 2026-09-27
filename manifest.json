@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Szita – hvg.hu bulvár nélkül",
-  "short_name": "Szita",
+  "name": "hvglight – hvg.hu bulvár nélkül",
+  "short_name": "hvglight",
   "version": "1.0.0",
   "description": "Saját szabályok szerint szűri a hvg.hu cikkeit: rovat, címke, kulcsszó és testvéroldal alapján. Tiszta hírfolyammal.",
   "icons": {
@@ -17,7 +17,7 @@
     "https://pulzus.hvg.hu/*"
   ],
   "action": {
-    "default_title": "Szita",
+    "default_title": "hvglight",
     "default_popup": "src/popup/popup.html",
     "default_icon": {
       "16": "icons/icon-16.png",
@@ -43,7 +43,7 @@
   ],
   "browser_specific_settings": {
     "gecko": {
-      "id": "szita@sajat.local",
+      "id": "hvglight@sajat.local",
       "strict_min_version": "115.0"
     }
   }

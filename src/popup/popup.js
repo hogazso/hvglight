@@ -1,7 +1,7 @@
-/* Szita – popup: kapcsoló, mód, és az aktív lap statisztikája. */
+/* hvglight – popup: kapcsoló, mód, és az aktív lap statisztikája. */
 (async function () {
   'use strict';
-  const S = globalThis.Szita;
+  const S = globalThis.hvglight;
   const el = S.ui.el;
   const $ = (id) => document.getElementById(id);
 
@@ -33,7 +33,7 @@
     $('index-age').textContent = 'Frissítés…';
     if (tabId != null) {
       try {
-        await S.api.tabs.sendMessage(tabId, { type: 'szita:refresh' });
+        await S.api.tabs.sendMessage(tabId, { type: 'hvglight:refresh' });
       } catch (e) {
         /* nincs content script */
       }
@@ -52,7 +52,7 @@
         el('p', {
           class: 'note',
           text: isHvg
-            ? 'A szita a telepítés utáni első betöltéstől működik.'
+            ? 'A hvglight a telepítés utáni első betöltéstől működik.'
             : 'Nyisd meg a hvg.hu-t, és itt látod, mit szűrtem ki, vagy olvass a tiszta hírfolyamban.',
         })
       );
@@ -98,7 +98,7 @@
     let st = null;
     if (tab && isHvg) {
       try {
-        st = await S.api.tabs.sendMessage(tab.id, { type: 'szita:stats' });
+        st = await S.api.tabs.sendMessage(tab.id, { type: 'hvglight:stats' });
       } catch (e) {
         st = null;
       }

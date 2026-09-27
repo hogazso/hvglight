@@ -1,4 +1,4 @@
-# Szita – hvg.hu bulvár nélkül
+# hvglight – hvg.hu bulvár nélkül
 
 Saját használatra készült böngészőbővítmény (Manifest V3, Chrome / Edge / Firefox).
 A hvg.hu oldalain a saját szabályaid szerint elrejti vagy halványítja a cikkeket, és
@@ -19,13 +19,13 @@ szól, a Chrome nyugodtan figyelmen kívül hagyja.
 **Firefox (115+)**
 
 1. `about:debugging#/runtime/this-firefox`, majd **Ideiglenes kiegészítő betöltése**, és válaszd a `manifest.json`-t.
-2. `about:addons`, majd Szita, **Engedélyek**: engedélyezd a hvg.hu hozzáférést (MV3 alatt ez nem automatikus).
+2. `about:addons`, majd hvglight, **Engedélyek**: engedélyezd a hvg.hu hozzáférést (MV3 alatt ez nem automatikus).
 
 Ideiglenesen betöltve a Firefox újraindításkor elfelejti. Tartósan úgy maradhat meg, ha
 az addons.mozilla.org-on „unlisted”-ként aláíratod (ingyenes, nem lesz nyilvános),
 vagy a Developer Editionben kikapcsolod az aláírás-ellenőrzést.
 
-Frissítés kódmódosítás után: a bővítmények oldalán a Szita kártyáján az újratöltés ikon,
+Frissítés kódmódosítás után: a bővítmények oldalán a hvglight kártyáján az újratöltés ikon,
 majd a hvg.hu lap újratöltése.
 
 ## Mit tud
@@ -109,6 +109,6 @@ src/options/             szabályok oldal
 src/reader/              tiszta hírfolyam
 ```
 
-A content script csak `data-szita-*` attribútumokat tesz a kártyákra; a láthatóságot a
-`<html data-szita-mode="hide|dim|off">` és a `content.css` dönti el. A mód váltása ezért
+A content script csak `data-hvglight-*` attribútumokat tesz a kártyákra; a láthatóságot a
+`<html data-hvglight-mode="hide|dim|off">` és a `content.css` dönti el. A mód váltása ezért
 azonnali, nem kell újraszámolni.

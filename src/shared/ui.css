@@ -1,4 +1,4 @@
-/* Szita – közös vizuális alap a popuphoz, a beállításokhoz és a hírfolyamhoz. */
+/* hvglight – közös vizuális alap a popuphoz, a beállításokhoz és a hírfolyamhoz. */
 :root {
   --paper: #f4f5f2;
   --paper-2: #e9ebe6;
@@ -46,7 +46,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   clip: rect(0 0 0 0); white-space: nowrap;
 }
 
-/* A szita "szövete": pöttyözött sáv a fejléc alatt – az egyetlen díszítőelem. */
+/* A hvglight "szövete": pöttyözött sáv a fejléc alatt – az egyetlen díszítőelem. */
 .mesh {
   height: 10px;
   background-image: radial-gradient(circle, var(--ink-3) 1.1px, transparent 1.4px);

@@ -1,11 +1,11 @@
 /*
- * Szita – közös konstansok, alapbeállítások és a beállítások tárolása.
+ * hvglight – közös konstansok, alapbeállítások és a beállítások tárolása.
  * Klasszikus scriptként töltődik be a content scriptben és az extension oldalakon is,
- * mindent a globalThis.Szita névtérre tesz.
+ * mindent a globalThis.hvglight névtérre tesz.
  */
 (function (g) {
   'use strict';
-  const S = (g.Szita = g.Szita || {});
+  const S = (g.hvglight = g.hvglight || {});
 
   // Firefoxban a promise-alapú `browser`, Chrome/Edge alatt a `chrome` névtér.
   S.api = g.browser && g.browser.runtime ? g.browser : g.chrome;
